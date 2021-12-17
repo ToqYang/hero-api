@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "../forms/Button";
 
 interface CardProps {
   id: string;
@@ -15,8 +16,8 @@ export const Card = ({ id, name, occupation, url }: CardProps) => {
         <img className="article__img" src={url} alt={name} />
       </div>
       <p>{occupation}</p>
-      <button className="article__learn-more btn-mt">👀 More</button>
-      <button className="article__learn-more btn-mt">➕ Add</button>
+      <Button text={`👀 More`} />
+      <Button text={`➕ Add`} />
     </article>
   );
 };
