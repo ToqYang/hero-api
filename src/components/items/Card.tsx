@@ -1,21 +1,16 @@
 import React from "react";
 import { Button } from "../forms/Button";
+import { SuperHero } from "../../interfaces/superheroes";
 
-interface CardProps {
-  id: string;
-  name: string;
-  occupation: string;
-  url: string;
-}
-
-export const Card = ({ id, name, occupation, url }: CardProps) => {
+export const Card = (item: SuperHero) => {
+  const { name, image, work } = item;
   return (
     <article className="article">
       <h2>{name}</h2>
       <div className="article__boxImg">
-        <img className="article__img" src={url} alt={name} />
+        <img className="article__img" src={image.url} alt={name} />
       </div>
-      <p>{occupation}</p>
+      <p>{work.occupation}</p>
       <Button text={`👀 More`} />
       <Button text={`➕ Add`} />
     </article>
