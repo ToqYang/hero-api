@@ -3,7 +3,7 @@ import { Cards } from "../components/items/Cards";
 
 export const Home = () => {
   return (
-    <>
+    <main>
       <h1>Build Your Team</h1>
       <div className="search">
         <input
@@ -16,6 +16,6 @@ export const Home = () => {
         </button>
       </div>
       <Cards />
-    </>
+    </main>
   );
 };
