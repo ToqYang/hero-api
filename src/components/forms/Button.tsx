@@ -1,8 +1,6 @@
-import React from "react";
-
 interface ButtonProps {
   text: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const Button = ({ text, onClick }: ButtonProps) => {
