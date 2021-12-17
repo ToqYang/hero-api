@@ -10,7 +10,7 @@ interface CardProps {
 
 export const Card = ({ id, name, occupation, url }: CardProps) => {
   return (
-    <article key={id} className="article">
+    <article className="article">
       <h2>{name}</h2>
       <div className="article__boxImg">
         <img className="article__img" src={url} alt={name} />

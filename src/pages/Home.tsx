@@ -2,6 +2,10 @@ import React from "react";
 import { Cards } from "../components/items/Cards";
 
 export const Home = () => {
+  //   const onClick = (e) => {
+  //     e.preventDefault();
+  //     dispatch();
+  //   };
   return (
     <main>
       <h1>Build Your Team</h1>

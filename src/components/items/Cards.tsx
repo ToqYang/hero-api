@@ -14,7 +14,7 @@ export const Cards = () => {
             occupation: work.occupation,
             url: image.url,
           };
-          return <Card {...card} />;
+          return <Card key={id} {...card} />;
         })}
     </div>
   );
