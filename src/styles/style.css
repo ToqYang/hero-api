@@ -116,6 +116,11 @@ nav > ul > nav > ul > li:hover {
 	flex-direction: column;
 }
 
+.article__img {
+  width: 100%;
+  height: auto;
+}
+
 .article__learn-more {
 	color: var(--gray-3);
 	background-color: var(--primary);
