@@ -133,6 +133,14 @@ nav > ul > nav > ul > li:hover {
 	cursor: pointer;
 }
 
+.article__learn-more:hover {
+	opacity: .8;
+}
+
+.article__learn-more:active {
+	opacity: .5;
+}
+
 .btn-mt {
 	margin-top: var(--spacer-4);
 }

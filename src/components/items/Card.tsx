@@ -7,7 +7,7 @@ import { FeatureHero } from "./FeatureHero";
 
 export const Card = (item: SuperHero) => {
   const dispatch = useDispatch();
-  const [showMore, setShowMore] = useState(true);
+  const [showMore, setShowMore] = useState(false);
   const { name, image, work, appearance, biography } = item;
 
   const addTeam = (e: React.MouseEvent<HTMLButtonElement>) => {
