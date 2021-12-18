@@ -16,6 +16,12 @@ export const heroesRed = (state = initialState, action: any) => {
 				...state,
 				teamHeroes: state.teamHeroes.map((hero: SuperHero) => hero.id === action.payload.id ? action.payload: hero)
 			}
+		case types.delHero:
+			console.log('del id', action.payload);
+			return {
+				...state,
+				teamHeroes: state.teamHeroes.filter((heroToDel: SuperHero) => heroToDel.id !== action.payload.id)
+			}
 		default:
 			return state;
 	}

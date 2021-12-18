@@ -18,3 +18,11 @@ export const joinTeam = (hero: SuperHero) => (dispatch: any, getState: any) => {
 		});
 	}
 };
+
+export const delTeam = (id: string) => (dispatch: any) => {
+	dispatch({
+		type: types.delHero,
+		payload: {id}
+	})
+};
+

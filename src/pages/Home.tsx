@@ -1,5 +1,5 @@
-import React from "react";
 import { Cards } from "../components/items/Cards";
+import { response } from "../fixture";
 
 export const Home = () => {
   return (
@@ -15,7 +15,7 @@ export const Home = () => {
           🔎
         </button>
       </div>
-      <Cards />
+      <Cards response={response.results} />
     </main>
   );
 };

@@ -2,19 +2,29 @@ import React, { useState } from "react";
 import { Button } from "../forms/Button";
 import { SuperHero } from "../../interfaces/superheroes";
 import { useDispatch } from "react-redux";
-import { joinTeam } from "../../actions/heroesAct";
+import { delTeam, joinTeam } from "../../actions/heroesAct";
 import { FeatureHero } from "./FeatureHero";
 
-export const Card = (item: SuperHero) => {
+interface CardProps {
+  item: SuperHero;
+  edit?: boolean;
+}
+
+export const Card = ({ edit = false, item }: CardProps) => {
   const dispatch = useDispatch();
   const [showMore, setShowMore] = useState(false);
-  const { name, image, work, appearance, biography } = item;
+  const { name, image, work, appearance, biography, id } = item;
+  console.log("edit: ", edit);
 
-  const addTeam = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const addHero = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch(joinTeam(item));
     console.log("item: ", item);
   };
+  const delHero = (e: React.MouseEvent<HTMLButtonElement>) => {
+    dispatch(delTeam(id));
+  };
+
   return (
     <article className="article">
       <h2>{name}</h2>
@@ -32,7 +42,13 @@ export const Card = (item: SuperHero) => {
         text={`${showMore ? "⬆️ Hidden" : "👀 More"}`}
         onClick={(e) => setShowMore((prev) => !prev)}
       />
-      <Button text={`➕ Add`} onClick={addTeam} />
+      {edit ? (
+        <>
+          <Button text={`❌ Delete`} onClick={delHero} />
+        </>
+      ) : (
+        <Button text={`➕ Add`} onClick={addHero} />
+      )}
     </article>
   );
 };

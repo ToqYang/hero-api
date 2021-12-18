@@ -1,12 +1,13 @@
-import React from "react";
 import { Card } from "./Card";
-import { response } from "../../fixture";
 
-export const Cards = () => {
+export const Cards = ({ response, edit = false }: any) => {
+  console.log("response: ", typeof response);
   return (
     <div className="articles">
       {response &&
-        response.results.map((item) => <Card key={item.id} {...item} />)}
+        response.map((item: any) => (
+          <Card edit={edit} key={item.id} item={item} />
+        ))}
     </div>
   );
 };
