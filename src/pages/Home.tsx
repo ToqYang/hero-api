@@ -2,13 +2,9 @@ import React from "react";
 import { Cards } from "../components/items/Cards";
 
 export const Home = () => {
-  //   const onClick = (e) => {
-  //     e.preventDefault();
-  //     dispatch();
-  //   };
   return (
     <main>
-      <h1>Build Your Team</h1>
+      <h1>Construye tu equipo</h1>
       <div className="search">
         <input
           className="search__input"

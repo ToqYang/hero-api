@@ -17,10 +17,10 @@ export const Navigation = () => {
         <nav>
           <ul className="nav-list">
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">Inicio</Link>
             </li>
             <li>
-              <Link to="/team">My Team</Link>
+              <Link to="/team">Mi Equipo</Link>
             </li>
           </ul>
           `
