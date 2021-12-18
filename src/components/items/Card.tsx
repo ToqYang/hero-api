@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "../forms/Button";
 import { SuperHero } from "../../interfaces/superheroes";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { joinTeam } from "../../actions/heroesAct";
+import { FeatureHero } from "./FeatureHero";
 
 export const Card = (item: SuperHero) => {
   const dispatch = useDispatch();
-  const { name, image, work } = item;
+  const [showMore, setShowMore] = useState(true);
+  const { name, image, work, appearance, biography } = item;
 
-  const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const addTeam = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch(joinTeam(item));
     console.log("item: ", item);
@@ -20,8 +22,17 @@ export const Card = (item: SuperHero) => {
         <img className="article__img" src={image.url} alt={name} />
       </div>
       <p>{work.occupation}</p>
-      <Button text={`👀 More`} />
-      <Button text={`➕ Add`} onClick={onClick} />
+      {showMore && (
+        <>
+          <FeatureHero item={appearance} title={"Apariencia"} />
+          <FeatureHero item={biography} title={"Biografia"} />
+        </>
+      )}
+      <Button
+        text={`${showMore ? "⬆️ Hidden" : "👀 More"}`}
+        onClick={(e) => setShowMore((prev) => !prev)}
+      />
+      <Button text={`➕ Add`} onClick={addTeam} />
     </article>
   );
 };
