@@ -1,4 +1,18 @@
-export const RangeSlider = ({ title, name, value, handleInputChange }: any) => {
+import { HandleNameChangeInterface } from "../../interfaces/global";
+
+interface RangeProps {
+  title: string;
+  name: string;
+  value: string;
+  handleInputChange: ({ target }: HandleNameChangeInterface) => void;
+}
+
+export const RangeSlider = ({
+  title = "",
+  name = "",
+  value = "",
+  handleInputChange,
+}: RangeProps) => {
   return (
     <div>
       <label htmlFor={name}>

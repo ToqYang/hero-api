@@ -11,7 +11,7 @@ export const Team = () => {
   const [heroes, setHeroes] = useState<SuperHero[]>([]);
   const [restart, setRestart] = useState(false);
 
-  const changeHeroes = (heroesUpdated: any) => {
+  const changeHeroes = (heroesUpdated: SuperHero[]) => {
     setHeroes(heroesUpdated);
   };
 

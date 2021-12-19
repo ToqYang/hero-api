@@ -4,8 +4,18 @@ import { Powerstats, SuperHero } from "../../interfaces/superheroes";
 import { RangeSlider } from "./RangeSlider";
 import { Button } from "./Button";
 
-export const Form = ({ heroes = [], changeHeroes, resetHeroes }: any) => {
-  const [myTeam, setMyTeam] = useState([]);
+interface FormProps {
+  heroes: SuperHero[];
+  changeHeroes: (heroesUpdated: SuperHero[]) => void;
+  resetHeroes: () => void;
+}
+
+interface PowerIdx {
+  powerstats: { [key: string]: any };
+}
+
+export const Form = ({ heroes = [], changeHeroes, resetHeroes }: FormProps) => {
+  const [myTeam, setMyTeam] = useState<SuperHero[]>([]);
   const { values, handleInputChange, reset } = useForm({
     intelligence: "100",
     strength: "100",
@@ -28,7 +38,7 @@ export const Form = ({ heroes = [], changeHeroes, resetHeroes }: any) => {
 
     const formKeys = Object.keys(values);
     const formValues = Object.values(values);
-    let heros: SuperHero[] = myTeam?.filter(({ powerstats }: any) => {
+    let heros: SuperHero[] = myTeam?.filter(({ powerstats }: PowerIdx) => {
       for (let j = 0; j < formKeys.length; ++j) {
         if (Number(powerstats[formKeys[j]]) > Number(formValues[j])) {
           return false;
@@ -37,7 +47,9 @@ export const Form = ({ heroes = [], changeHeroes, resetHeroes }: any) => {
       return true;
     });
 
-    heros = heros.sort((a: any, b: any) => a.name.localeCompare(b.name));
+    heros = heros.sort((a: SuperHero, b: SuperHero) =>
+      a.name.localeCompare(b.name)
+    );
 
     console.log("heroes: ", heros);
     changeHeroes && changeHeroes(heros);
