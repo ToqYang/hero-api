@@ -1,5 +1,5 @@
 import { Cards } from "../components/items/Cards";
-import { response } from "../fixture";
+import { response } from "../tests/fixtures/fixture";
 
 export const Home = () => {
   return (

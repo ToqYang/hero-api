@@ -7,7 +7,6 @@ interface CardProps {
 }
 
 export const Cards = ({ response = [], edit = false }: CardProps) => {
-  console.log("response: ", typeof response);
   return (
     <>
       {response && <h4>Results: ({response.length})</h4>}

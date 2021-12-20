@@ -14,12 +14,10 @@ export const Card = ({ edit = false, item }: CardProps) => {
   const dispatch = useDispatch();
   const [showMore, setShowMore] = useState(false);
   const { name, image, work, appearance, biography, id } = item;
-  console.log("edit: ", edit);
 
   const addHero = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch(joinTeam(item));
-    console.log("item: ", item);
   };
   const delHero = (e: React.MouseEvent<HTMLButtonElement>) => {
     dispatch(delTeam(id));
