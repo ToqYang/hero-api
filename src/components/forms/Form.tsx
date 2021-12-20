@@ -3,6 +3,7 @@ import useForm from "../../hooks/useForm";
 import { Powerstats, SuperHero } from "../../interfaces/superheroes";
 import { RangeSlider } from "./RangeSlider";
 import { Button } from "./Button";
+import Swal from "sweetalert2";
 
 interface FormProps {
   heroes: SuperHero[];
@@ -51,14 +52,23 @@ export const Form = ({ heroes = [], changeHeroes, resetHeroes }: FormProps) => {
       a.name.localeCompare(b.name)
     );
 
-    console.log("heroes: ", heros);
     changeHeroes && changeHeroes(heros);
+    Swal.fire({
+      icon: "info",
+      title: "Actualizado",
+      text: `Filtros añadidos`,
+    });
   };
 
   const resetFilters = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     reset();
     resetHeroes && resetHeroes();
+    Swal.fire({
+      icon: "info",
+      title: "Actualizado",
+      text: `Filtros reseteados`,
+    });
   };
 
   useEffect(() => {
