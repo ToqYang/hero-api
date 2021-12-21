@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Cards } from "../components/items/Cards";
 import { getSuperHero } from "../services/getSuperHero";
 import { SuperHero } from "../interfaces/superheroes";
@@ -9,24 +9,28 @@ export const Home = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<SuperHero[]>([]);
 
+  const getHero = useCallback(() => {
+    getSuperHero({ searchWord })
+      .then((res: any) => setData(res.results))
+      .catch((err) =>
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message,
+        })
+      )
+      .finally(() => {
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+      });
+  }, [searchWord]);
+
   useEffect(() => {
     if (loading === true) {
-      getSuperHero({ searchWord })
-        .then((res: any) => setData(res.results))
-        .catch((err) =>
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: err.message,
-          })
-        )
-        .finally(() => {
-          setTimeout(() => {
-            setLoading(false);
-          }, 1000);
-        });
+      getHero();
     }
-  }, [loading]);
+  }, [loading, getHero]);
 
   return (
     <main>
