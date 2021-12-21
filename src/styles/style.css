@@ -12,7 +12,7 @@
   --gray-3: #fbfbfb;
   --gray-4: #ffffff;
   --primary: #8a2be2;
-  --secondary: #20d397;
+  --secondary: #248bcc;
   --font-size-1: 1.5rem;
   --font-size-2: 1.25rem;
   --font-size-3: 1rem;
@@ -243,6 +243,7 @@ form {
 
 	.header__imgtype {
 		flex-direction: column;
+		margin-right: 0;
 	}
 
 	nav {

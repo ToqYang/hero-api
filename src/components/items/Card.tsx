@@ -32,8 +32,8 @@ export const Card = ({ edit = false, item }: CardProps) => {
       <p>{work.occupation}</p>
       {showMore && (
         <>
-          <FeatureHero item={appearance} title={"Apariencia"} />
-          <FeatureHero item={biography} title={"Biografia"} />
+          <FeatureHero id={id} item={appearance} title={"Apariencia"} />
+          <FeatureHero id={id} item={biography} title={"Biografia"} />
         </>
       )}
       <Button

@@ -7,19 +7,20 @@ import {
 } from "../../interfaces/superheroes";
 
 interface FeatureProps {
+  id: string;
   item: Appearance | Biography | Connections | Powerstats | Work;
   title?: string;
 }
 
-export const FeatureHero = ({ item, title }: FeatureProps) => {
+export const FeatureHero = ({ id, item, title }: FeatureProps) => {
   return (
     <div>
       {title && <h3>{title}</h3>}
       {Object.entries(item)
-        .map(([key, value]) => {
+        .map(([key, value], idx) => {
           if (!Array.isArray(value)) {
             return (
-              <p>
+              <p key={`${id}-${idx}`}>
                 <strong style={{ color: "gray", fontWeight: "600" }}>
                   {key.charAt(0).toUpperCase() + key.slice(1)}
                 </strong>
